@@ -1,1 +1,70 @@
+6e349195bdc65a1964367317ba14b905440d75398c3fbb1911c3400082d7f149
+Ca601708a3822d4f1fbea39171c8d5e94c0b8741f35a5a2fb63cd6d71da29b1a
+0d2619844a3ab68ee18c3a4768b10e6b8aea31143023277883b7ff9f7a9e55ca
+Ebffc9ced2dba66db9aae02c7ccd2759a36c5167df5cd4adb151b20e7eab173c
+023d722cbbdd04e3db77de7e6e3cfeabcef21ba5b2f04c3f3a33691801dd45eb
 
+
+TTP
+
+
+
+
+
+
+
+Additional MDeployer file paths
+C:\Windows\Debug\b.cache
+C:\Windows\Debug\a.cache
+C:\Windows\Debug\fail.txt
+C:\Windows\Debug\stop.exe
+
+Commands used by MDeployer
+reg delete HKLM\SYSTEM\CurrentControlSet\Control\Safeboot\Network\WinDefend /f
+C:\Windows\System32\cmd.exe /c takeown /R /A /F "C:\ProgramData\[redacted]" /D Y
+C:\Windows\System32\cmd.exe /c takeown /R /A /F "C:\Program Files\[redacted]" /D Y
+sc create irnagentd binpath="C:\Windows\System32\cmd.exe /c start /B rundll32.exe C:\Windows\Debug\dtest.dll,Open" start=auto
+sc delete irnagentd
+reg add HKLM\SYSTEM\CurrentControlSet\Control\Safeboot\Network\irnagentd /t REG_SZ /d Service /f
+C:\Windows\System32\cmd.exe /c bcdedit /set {default} safeboot Minimal
+C:\Windows\System32\cmd.exe /c bcdedit /deletevalue {default} safeboot
+reg delete HKLM\SYSTEM\CurrentControlSet\Control\Safeboot\Network\WinDefend /f
+C:\Windows\System32\cmd.exe /c ping localhost -n 5 > nul & del C:\Windows\Debug\dtest.dll
+shutdown -r -f -t 00
+C:\Windows\praxisbackup.exe
+C:\Windows\Debug\pay.exe
+
+
+Appendix: Example of MS4Killer termination process list (in alphabetical order)
+SentinelAgent.exe
+SentinelAgentWorker.exe
+SentinelServiceHost.exe
+SentinelStaticEngine.exe
+LogProcessorService.exe
+SentinelStaticEngineScanner.exe
+SentinelHelperService.exe
+SentinelBrowserNativeHost.exe
+LogCollector.exe
+SentinelMemoryScanner.exe
+SentinelRanger.exe
+SentinelRemediation.exe
+SentinelRemoteShellHost.exe
+SentinelScanFromContextMenu.exe
+CylanceSvc.exe
+ekrn.exe
+WRSA.exe	WRSkyClient.x64.exe
+WRCoreService.x64.exe
+MsMpEng.exe
+dsa.exe
+ds_monitor.exe
+Notifier.exe
+coreServiceShell.exe
+firefox.exe
+MsMpEng.exe
+EPProtectedService.exe
+EPIntegrationService.exe
+bdredline.exe
+EPSecurityService.exe
+EPUpdateService.exe
+ERAAgent.exe
+ekrn.exe
